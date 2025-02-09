@@ -1,0 +1,29 @@
+flowchart TB
+    subgraph UI[User Interface]
+        A[User Input] --> B[Chat Interface]
+        B --> C[Command History]
+    end
+
+    subgraph LLM[Language Model Processing]
+        D[Ollama Model] --> E[Command Parser]
+        E --> F[Intent Recognition]
+    end
+
+    subgraph FSM[File System Manager]
+        G[File Operations] --> H[Code Templates]
+        H --> I[Error Handling]
+    end
+
+    subgraph WS[Workspace]
+        J[Generated Files] --> K[Code Files]
+        K --> L[Project Structure]
+    end
+
+    B --> D
+    F --> G
+    I --> J
+
+    style UI fill:#f9f,stroke:#333,stroke-width:2px
+    style LLM fill:#bbf,stroke:#333,stroke-width:2px
+    style FSM fill:#bfb,stroke:#333,stroke-width:2px
+    style WS fill:#fbb,stroke:#333,stroke-width:2px
