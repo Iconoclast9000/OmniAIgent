@@ -1,0 +1,50 @@
+graph TD
+    %% Project Structure Diagram
+    subgraph OmnitrAIce["OmnitrAIce Project"]
+        Root[Root Directory]
+    end
+
+    subgraph MainFiles["Main Files"]
+        Root --> README[README.md]
+        Root --> Requirements[requirements.txt]
+        Root --> Technical[TECHNICAL.md]
+        Root --> Main[omniagent.py]
+    end
+
+    subgraph SourceCode["Source Code"]
+        Root --> Src[src/]
+        Src --> Utils[utils/]
+        Utils --> FileSystem[filesystem.py]
+        Utils --> Chat[chat.py]
+        Utils --> CodeCleaner[code_cleaner.py]
+    end
+
+    subgraph Documentation["Documentation"]
+        Root --> Docs[docs/]
+        Docs --> Architecture[architecture.md]
+        Docs --> API[api.md]
+        Docs --> UserGuide[user_guide.md]
+        Docs --> Index[index.md]
+        Docs --> DiagramsDir[diagrams/]
+    end
+
+    subgraph Diagrams["Diagrams"]
+        DiagramsDir --> SysArch[system_architecture.mmd]
+        DiagramsDir --> CodeGen[code_generation_flow.mmd]
+        DiagramsDir --> FileOps[file_operations.mmd]
+        DiagramsDir --> CodeClean[code_cleaning_process.mmd]
+        DiagramsDir --> CompInt[component_interaction.mmd]
+        DiagramsDir --> ProjStr[project_structure.mmd]
+        DiagramsDir --> CmdFlow[command_flow.svg]
+    end
+
+    subgraph Workspace["Generated Code"]
+        Root --> WorkDir[workspace/]
+        WorkDir --> GenCode[Generated Code Files]
+    end
+
+    %% Style
+    classDef folder fill:#f9f,stroke:#333,stroke-width:2px
+    classDef file fill:#fff,stroke:#333,stroke-width:1px
+    class Root,Src,Utils,Docs,DiagramsDir,WorkDir folder
+    class README,Requirements,Technical,FileSystem,Chat,CodeCleaner,Architecture,API,UserGuide,Index file

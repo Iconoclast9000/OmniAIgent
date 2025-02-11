@@ -1,46 +1,58 @@
-# OmniAIgent Documentation
+# OmnitrAIce Documentation
 
-## Overview
-OmniAIgent is a conversational filesystem manager with code generation capabilities. This documentation provides comprehensive information about the system architecture, components, and usage.
+Welcome to the OmnitrAIce documentation. This comprehensive guide will help you understand and use the system effectively.
 
 ## Documentation Structure
 
-1. Architecture
-   - [System Architecture](ARCHITECTURE.md)
-   - Component Details
-   - Data Flow
-   - Error Handling
+### Core Documentation
+- [Architecture Overview](architecture.md)
+- [API Reference](api.md)
+- [User Guide](user_guide.md)
 
-2. Diagrams
-   - [Project Structure](diagrams/project_structure.svg)
-   - [Command Flow](diagrams/command_flow.svg)
-   - [System Architecture](diagrams/system_architecture.mmd)
+### Diagrams
+- System Architecture
+- Code Generation Flow
+- Component Interaction
 
-3. Installation & Usage
-   - [Main README](../README.md)
-   - Installation Instructions
-   - Usage Examples
-   - Command Reference
+### Additional Resources
+- [Technical Documentation](../TECHNICAL.md)
+- [README](../README.md)
+- [Requirements](../requirements.txt)
 
 ## Quick Links
 
-- [Project Structure](diagrams/project_structure.svg)
-- [Command Flow](diagrams/command_flow.svg)
-- [System Architecture](diagrams/system_architecture.mmd)
-- [Architecture Details](ARCHITECTURE.md)
-- [Main README](../README.md)
+### For Users
+- [Installation Guide](user_guide.md#installation)
+- [Getting Started](user_guide.md#getting-started)
+- [Basic Usage](user_guide.md#basic-usage)
+- [Troubleshooting](user_guide.md#troubleshooting)
 
-## Contributing
+### For Developers
+- [API Reference](api.md)
+- [Architecture Details](architecture.md)
+- [Development Guidelines](../TECHNICAL.md#development-guidelines)
 
-Please read our contributing guidelines before submitting changes:
-1. Fork the repository
-2. Create your feature branch
-3. Make your changes
-4. Submit a pull request
+## System Overview
 
-## Support
+OmnitrAIce is an AI-powered code generation and file management system that:
+1. Generates clean, production-ready code
+2. Supports multiple programming languages
+3. Manages files and directories
+4. Provides robust error handling
 
-For support:
-1. Check the documentation
-2. Open an issue
-3. Contact maintainers
+```mermaid
+graph TD
+    A[User] --> B[Command Interface]
+    B --> C[FileSystemManager]
+    C --> D[Code Generator]
+    C --> E[File Operations]
+    D --> F[Code Cleaner]
+    F --> G[File System]
+```
+
+## Getting Help
+
+- Use `help` command in the application
+- Check the [User Guide](user_guide.md)
+- Review [Troubleshooting](user_guide.md#troubleshooting)
+- Create an issue on GitHub

@@ -1,0 +1,47 @@
+graph TD
+    %% Code Cleaning Process
+    subgraph Input["Input Processing"]
+        Raw[Raw Generated Code]
+        Lang[Language Detection]
+        Config[Cleaner Configuration]
+    end
+
+    subgraph Cleaning["Cleaning Steps"]
+        MD[Remove Markdown]
+        Exp[Remove Explanations]
+        Prompt[Remove Prompt Artifacts]
+        Comment[Clean Comments]
+        Format[Format Code]
+        Space[Clean Whitespace]
+    end
+
+    subgraph Validation["Validation"]
+        Syntax[Syntax Check]
+        Structure[Structure Check]
+        Quality[Quality Check]
+    end
+
+    subgraph Output["Output Processing"]
+        Clean[Cleaned Code]
+        Save[Save to File]
+        Report[Generate Report]
+    end
+
+    %% Flow
+    Raw --> Lang
+    Lang --> Config
+    Config --> MD
+
+    MD --> Exp
+    Exp --> Prompt
+    Prompt --> Comment
+    Comment --> Format
+    Format --> Space
+
+    Space --> Syntax
+    Syntax --> Structure
+    Structure --> Quality
+
+    Quality --> Clean
+    Clean --> Save
+    Save --> Report

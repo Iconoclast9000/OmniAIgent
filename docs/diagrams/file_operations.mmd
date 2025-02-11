@@ -1,0 +1,63 @@
+graph TB
+    %% File Operations Diagram
+    subgraph Commands["File Commands"]
+        Create[Create]
+        Read[Read]
+        Update[Update]
+        Delete[Delete]
+        List[List]
+        Move[Move/Rename]
+        Copy[Copy]
+    end
+
+    subgraph Validation["Command Validation"]
+        Check{Path Valid?}
+        Perms{Permissions?}
+        Exists{File Exists?}
+    end
+
+    subgraph Operations["File System Operations"]
+        CreateOp[Create Operation]
+        ReadOp[Read Operation]
+        UpdateOp[Update Operation]
+        DeleteOp[Delete Operation]
+        ListOp[List Operation]
+        MoveOp[Move Operation]
+        CopyOp[Copy Operation]
+    end
+
+    subgraph Results["Operation Results"]
+        Success[Success]
+        Failure[Failure]
+        ErrorHandler[Error Handler]
+    end
+
+    %% Flow
+    Create --> Check
+    Read --> Check
+    Update --> Check
+    Delete --> Check
+    List --> Check
+    Move --> Check
+    Copy --> Check
+
+    Check -->|Yes| Perms
+    Check -->|No| Failure
+
+    Perms -->|Yes| Exists
+    Perms -->|No| Failure
+
+    Exists -->|Yes for Read/Update/Delete| Operations
+    Exists -->|No for Create| Operations
+    Exists -->|No for Read/Update/Delete| Failure
+
+    CreateOp --> Success
+    ReadOp --> Success
+    UpdateOp --> Success
+    DeleteOp --> Success
+    ListOp --> Success
+    MoveOp --> Success
+    CopyOp --> Success
+
+    Success --> ErrorHandler
+    Failure --> ErrorHandler

@@ -1,159 +1,121 @@
-# OmniAIgent
+# OmnitrAIce
 
-A powerful AI-driven chat interface that implements filesystem operations and code generation through natural language processing.
+OmnitrAIce is an AI-powered code generation and file management system that combines intelligent code generation with robust filesystem operations. It uses the DeepSeek language model to generate clean, production-ready code in multiple programming languages.
 
 ## Features
 
-- Natural language file operations
-- Code generation capabilities
-- Intuitive chat interface
-- Built-in game templates
-- File and directory management
-- Conversation history tracking
+### Code Generation
+- Dynamic code generation for multiple programming languages
+- Automatic code cleaning and formatting
+- Support for various project types (games, apps, utilities)
+- Intelligent file naming and organization
+- Clean code output without explanatory text or artifacts
 
-## Project Structure
+### File Management
+- Create, read, update, and delete files and directories
+- Move and copy operations
+- Directory navigation and listing
+- UTF-8 support for all file operations
+- Detailed file information display
 
-```
-OmniAIgent/
-├── src/                    # Source code directory
-│   ├── __init__.py        # Package initialization
-│   └── utils/             # Utility modules
-│       ├── chat.py        # Chat interface implementation
-│       └── filesystem.py  # Filesystem operations
-├── workspace/             # Working directory for file operations
-│   └── snake.py          # Generated snake game
-├── .venv/                # Virtual environment
-├── omniagent.py         # Main application entry point
-├── README.md            # Documentation
-└── requirements.txt     # Project dependencies
-```
+### Supported Languages
+- Python
+- JavaScript
+- TypeScript
+- Java
+- C++
+- C
+- Rust
+- Go
+- Ruby
+- PHP
+- Swift
+- Kotlin
+- Scala
+- HTML
+- CSS
 
 ## Installation
 
 1. Clone the repository:
-   ```bash
-   git clone [repository-url]
-   cd OmniAIgent
-   ```
+```bash
+git clone https://github.com/yourusername/OmnitrAIce.git
+cd OmnitrAIce
+```
 
-2. Create and activate virtual environment:
-   ```bash
-   python -m venv .venv
-   # On Windows:
-   .venv\Scripts\activate
-   # On Linux/Mac:
-   source .venv/bin/activate
-   ```
+2. Create and activate a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
 
 3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Install Ollama:
-   - Visit https://ollama.ai/download
-   - Download and install for your operating system
-
-5. Pull required model:
-   ```bash
-   ollama pull deepseek-r1:1.5b
-   ```
+```bash
+pip install -r requirements.txt
+pipvinstall langchain-ollama ollama
+```
 
 ## Usage
 
-1. Start the application:
-   ```bash
-   python omniagent.py
-   ```
+Start the application:
+```bash
+python omniagent.py
+```
 
-2. Available commands:
-   - List files: `list files`
-   - Create file: `create file <name>`
-   - Write to file: `write <content> to <file>`
-   - Read file: `read file <name>`
-   - Delete file: `delete <name>`
-   - Create directory: `create directory <name>`
-   - Change directory: `cd <path>`
-   - Move file: `move <source> to <destination>`
-   - Copy file: `copy <source> to <destination>`
+### Common Commands
 
-3. Code Generation Examples:
-   ```
-   # Create a snake game
-   create file snake.py
-   write snake game code to snake.py
-   
-   # Read the generated code
-   read file snake.py
-   ```
+1. Generate Code:
+```
+generate a calculator in javascript
+generate a web server in python
+generate a todo app in typescript
+```
 
-## Components
+2. File Operations:
+```
+list                          # List directory contents
+create directory projectname  # Create a new directory
+create file example.txt       # Create a new file
+read file example.txt        # Show file contents
+delete file example.txt      # Delete a file
+cd foldername               # Change directory
+```
 
-### Chat Interface (chat.py)
-- Handles natural language processing
-- Manages conversation history
-- Interprets user commands
-- Uses Ollama language model
+## Project Structure
 
-### Filesystem Manager (filesystem.py)
-- Implements file operations
-- Handles code templates
-- Manages working directory
-- Provides error handling
-
-### Code Templates
-Currently supported templates:
-- Snake Game (Pygame implementation)
-- More templates coming soon!
+```
+OmnitrAIce/
+├── src/
+│   └── utils/
+│       ├── filesystem.py    # Core file system operations
+│       ├── code_cleaner.py  # Code cleaning utilities
+│       └── chat.py         # Chat interface and prompt handling
+├── workspace/              # Generated code directory
+├── omniagent.py           # Main application entry point
+├── requirements.txt       # Project dependencies
+└── README.md             # Documentation
+```
 
 ## Dependencies
 
-- langchain-ollama==0.1.3
-- langchain-core==0.1.17
-- python-dotenv==1.0.0
-- requests==2.31.0
-- pygame (for running generated games)
-
-## Examples
-
-1. Create and run a snake game:
-   ```
-   You: create file snake.py
-   Result: Created file: snake.py
-
-   You: write snake game code to snake.py
-   Result: Created snake.py with snake_game template
-
-   You: read file snake.py
-   Result: [Snake game code will be displayed]
-   ```
-
-2. Manage files:
-   ```
-   You: list files
-   Result: 📄 snake.py - 3299B - 2025-02-09 09:50
-   ```
-
-## Future Enhancements
-
-- Additional game templates
-- More code generation capabilities
-- Enhanced natural language understanding
-- Project template generation
-- Multi-file operations
-- Code analysis and suggestions
+- langchain-ollama
+- pathlib
+- Python 3.8+
 
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
+## Acknowledgments
 
-For support, please open an issue in the GitHub repository or contact the maintainers directly."# OmniAIgent" 
+- DeepSeek for the language model
+- LangChain for AI integration
+- The open-source community for inspiration and tools

@@ -1,115 +1,89 @@
-# OmniAIgent Architecture
+# OmnitrAIce Architecture Documentation
 
 ## System Overview
 
-OmniAIgent is built with a modular architecture consisting of four main components:
+OmnitrAIce is built with a modular, layered architecture that separates concerns between user interaction, code generation, and file system operations.
 
-1. User Interface (UI)
-   - Chat Interface
-   - Command History
-   - User Input Processing
+## Core Components
 
-2. Language Model Processing (LLM)
-   - Ollama Model Integration
-   - Command Parsing
-   - Intent Recognition
+### 1. User Interface Layer
+```mermaid
+graph TD
+    A[User Input] --> B[Command Parser]
+    B --> C[Response Handler]
+```
 
-3. File System Manager (FSM)
-   - File Operations
-   - Code Templates
-   - Error Handling
+The UI layer handles:
+- Command line interface
+- Input parsing
+- Response formatting
+- Error display
+- Help system
 
-4. Workspace Management
-   - Generated Files
-   - Code Files
-   - Project Structure
+### 2. Core System Layer
+```mermaid
+graph TD
+    D[FileSystemManager] --> E[Code Generator]
+    D --> F[File Operations]
+    E --> G[Code Cleaner]
+```
 
-## Component Details
+The core system manages:
+- File operations
+- Code generation
+- Code cleaning
+- Error handling
+- State management
 
-### 1. User Interface
-- **Chat Interface**: Provides natural language interaction
-- **Command History**: Maintains conversation context
-- **User Input**: Processes and validates user commands
+### 3. AI Integration Layer
+```mermaid
+graph TD
+    H[LangChain] --> I[DeepSeek Model]
+    I --> J[Response Processing]
+```
 
-### 2. Language Model Processing
-- **Ollama Model**: deepseek-r1:1.5b for NLP
-- **Command Parser**: Converts natural language to system commands
-- **Intent Recognition**: Identifies user intentions and required actions
-
-### 3. File System Manager
-- **File Operations**: Handles create, read, write, delete operations
-- **Code Templates**: Pre-built code templates for games and applications
-- **Error Handling**: Robust error management and user feedback
-
-### 4. Workspace Management
-- **Generated Files**: Output management
-- **Code Files**: Source code organization
-- **Project Structure**: Directory and file hierarchy
+The AI layer provides:
+- Code generation
+- Language understanding
+- Context management
+- Response optimization
 
 ## Data Flow
 
-1. User Input → Chat Interface
-2. Chat Interface → Language Model
-3. Language Model → Command Parser
-4. Command Parser → File System Manager
-5. File System Manager → Workspace
-6. Workspace → User Output
+1. **Command Processing**
+   ```
+   User Input -> Command Parser -> FileSystemManager
+   ```
 
-## Directory Structure
+2. **Code Generation**
+   ```
+   FileSystemManager -> AI Model -> Code Cleaner -> File System
+   ```
 
-```
-OmniAIgent/
-├── src/                    # Source code
-│   ├── __init__.py        # Package initialization
-│   └── utils/             # Utility modules
-│       ├── chat.py        # Chat interface
-│       └── filesystem.py  # File operations
-├── docs/                  # Documentation
-│   ├── ARCHITECTURE.md    # This file
-│   ├── diagrams/         # Visual documentation
-│   └── api/              # API documentation
-├── workspace/            # Working directory
-└── tests/               # Test files
-```
+3. **File Operations**
+   ```
+   FileSystemManager -> File System -> Response Handler
+   ```
 
-## Component Communication
+## System Interactions
 
-Components communicate through well-defined interfaces:
-1. UI → LLM: Text-based commands
-2. LLM → FSM: Structured command objects
-3. FSM → Workspace: File system operations
-4. Workspace → UI: Operation results
+### Command Processing Flow
+1. User enters command
+2. Command parser identifies operation type
+3. FileSystemManager executes operation
+4. Response handler formats result
+5. User receives feedback
 
-## Error Handling
+### Code Generation Flow
+1. Parse code generation request
+2. Generate code using AI model
+3. Clean and format code
+4. Save to file system
+5. Return result to user
 
-1. Input Validation
-   - Command syntax checking
-   - Path validation
-   - Permission verification
-
-2. Operation Safety
-   - File existence checks
-   - Duplicate prevention
-   - Backup mechanisms
-
-3. User Feedback
-   - Clear error messages
-   - Operation status
-   - Success confirmations
-
-## Future Architecture Considerations
-
-1. Extensibility
-   - Plugin system
-   - Custom command handlers
-   - Additional code templates
-
-2. Scalability
-   - Multi-user support
-   - Distributed file operations
-   - Cloud integration
-
-3. Security
-   - Access control
-   - Encryption
-   - Secure file operations
+### File Operation Flow
+1. Parse file operation request
+2. Validate operation
+3. Execute file system change
+4. Handle errors if any
+5. Return operation status

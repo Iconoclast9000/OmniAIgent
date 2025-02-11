@@ -1,7 +1,3 @@
-"""
-OmniAIgent - A conversational filesystem manager with code generation capabilities
-"""
-
 from src.utils.filesystem import FileSystemManager
 from src.utils.chat import (
     initialize_model,
@@ -11,13 +7,12 @@ from src.utils.chat import (
 )
 from langchain_core.prompts import ChatPromptTemplate
 
+
 def handle_conversation():
-    """Main conversation handler"""
+    """Main conversation handler."""
     context = load_history()
     fs_manager = FileSystemManager()
-    print(
-        "Welcome to OmniAIgent! Type 'exit' to quit or 'help' for commands."
-    )
+    print("Welcome to OmniAIgent! Type 'exit' to quit or 'help' for commands.")
 
     model = initialize_model()
     prompt = ChatPromptTemplate.from_template(SYSTEM_PROMPT)
@@ -74,6 +69,7 @@ Available commands:
 
         except Exception as e:
             print("Error occurred:", e)
+
 
 if __name__ == "__main__":
     handle_conversation()

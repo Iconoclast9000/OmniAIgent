@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant UI as User Interface
+    participant FS as FileSystemManager
+    participant AI as AI System
+    participant CC as Code Cleaner
+    participant Disk as File System
+
+    Note over UI,Disk: Basic File Operation
+    UI->>FS: File Operation Request
+    FS->>Disk: Execute Operation
+    Disk-->>FS: Operation Result
+    FS-->>UI: Status Message
+
+    Note over UI,Disk: Code Generation
+    UI->>FS: Generate Code Request
+    FS->>AI: Code Generation Request
+    AI-->>FS: Raw Generated Code
+    FS->>CC: Clean Code Request
+    CC-->>FS: Cleaned Code
+    FS->>Disk: Save Code
+    Disk-->>FS: Save Confirmation
+    FS-->>UI: Success Message
+
+    Note over UI,Disk: Error Handling
+    UI->>FS: Invalid Request
+    FS->>FS: Validate Request
+    FS-->>UI: Error Message
+    
+    Note over UI,Disk: File Management
+    UI->>FS: List Directory
+    FS->>Disk: Read Directory
+    Disk-->>FS: Directory Contents
+    FS-->>UI: Formatted List

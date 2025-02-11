@@ -1,29 +1,42 @@
-flowchart TB
-    subgraph UI[User Interface]
-        A[User Input] --> B[Chat Interface]
-        B --> C[Command History]
+graph TD
+    %% System Architecture Diagram
+    subgraph UserInterface["User Interface Layer"]
+        CLI[Command Line Interface]
+        Parser[Command Parser]
+        Response[Response Handler]
     end
 
-    subgraph LLM[Language Model Processing]
-        D[Ollama Model] --> E[Command Parser]
-        E --> F[Intent Recognition]
+    subgraph CoreSystem["Core System Layer"]
+        FSM[FileSystemManager]
+        CodeGen[Code Generator]
+        CodeClean[Code Cleaner]
+        FileOps[File Operations]
     end
 
-    subgraph FSM[File System Manager]
-        G[File Operations] --> H[Code Templates]
-        H --> I[Error Handling]
+    subgraph AILayer["AI Layer"]
+        LangChain[LangChain]
+        AIModel[DeepSeek Model]
+        Prompt[Prompt Manager]
     end
 
-    subgraph WS[Workspace]
-        J[Generated Files] --> K[Code Files]
-        K --> L[Project Structure]
+    subgraph Storage["Storage Layer"]
+        FS[File System]
+        Cache[Cache]
+        History[Command History]
     end
 
-    B --> D
-    F --> G
-    I --> J
+    %% Connections
+    CLI --> Parser
+    Parser --> FSM
+    FSM --> CodeGen
+    CodeGen --> AIModel
+    AIModel --> CodeClean
+    CodeClean --> FileOps
+    FileOps --> FS
+    FSM --> History
+    CodeGen --> Cache
 
-    style UI fill:#f9f,stroke:#333,stroke-width:2px
-    style LLM fill:#bbf,stroke:#333,stroke-width:2px
-    style FSM fill:#bfb,stroke:#333,stroke-width:2px
-    style WS fill:#fbb,stroke:#333,stroke-width:2px
+    %% Data Flow
+    Parser -.-> Response
+    FileOps -.-> Response
+    Response -.-> CLI

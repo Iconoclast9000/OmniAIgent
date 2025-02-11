@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant User
+    participant Parser as Command Parser
+    participant FSM as FileSystemManager
+    participant AI as AI Model
+    participant Cleaner as Code Cleaner
+    participant FS as File System
+
+    User->>Parser: Input Command
+    Parser->>FSM: Parse Command
+    
+    FSM->>AI: Generate Code Request
+    Note over AI: Process Description
+    AI->>FSM: Raw Generated Code
+    
+    FSM->>Cleaner: Clean Code
+    Note over Cleaner: Remove Artifacts
+    Note over Cleaner: Format Code
+    Note over Cleaner: Clean Comments
+    Cleaner->>FSM: Cleaned Code
+    
+    FSM->>FS: Save File
+    FS->>FSM: File Saved
+    FSM->>Parser: Operation Result
+    Parser->>User: Success Message
